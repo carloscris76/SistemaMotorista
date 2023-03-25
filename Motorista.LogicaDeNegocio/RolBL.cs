@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Motorista.LogicaDeNegocio
 {
-    internal class RolBL
+    public class RolBL
     {
     }
 }

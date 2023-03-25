@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Motorista.AccesoADatos
 {
-    internal class ClienteDAL
+    public class ClienteDAL
     {
     }
 }

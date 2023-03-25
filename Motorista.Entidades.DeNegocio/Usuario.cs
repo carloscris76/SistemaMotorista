@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Motorista.Entidades.DeNegocio
 {
-    internal class Usuario
+    public class Usuario
     {
     }
 }

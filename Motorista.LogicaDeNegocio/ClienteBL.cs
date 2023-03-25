@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Motorista.LogicaDeNegocio
 {
-    internal class ClienteBL
+    public class ClienteBL
     {
     }
 }

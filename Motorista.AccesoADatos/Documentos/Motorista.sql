@@ -36,9 +36,9 @@ CREATE TABLE dbo.Taxista (
 GO 
 CREATE TABLE dbo.Cliente(
   Id int primary key identity (1,1) not null,
-  IdMotorista int not null,
+  IdTaxista int not null,
   Nombre varchar (60) not null,
   Apellido varchar (60) not null,s
   TipoCliente tinyint not null
-  constraint fk1_Motorista_Cliente foreign key (IdMotorista) references Motorista (Id)
+  constraint fk1_Taxista_Cliente foreign key (IdTaxista) references Taxista (Id)
 );

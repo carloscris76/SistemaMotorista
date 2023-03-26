@@ -21,7 +21,7 @@ CREATE TABLE dbo.Usuario(
   constraint fk1_Rol_Usuario foreign key (IdRol) references Rol (id)
 );
 GO
-CREATE TABLE dbo.Motorista (
+CREATE TABLE dbo.Taxista (
   Id int primary key identity (1,1) not null,
   Nombre varchar (60) not null,
   Apellido varchar (60) not null,
@@ -38,8 +38,7 @@ CREATE TABLE dbo.Cliente(
   Id int primary key identity (1,1) not null,
   IdMotorista int not null,
   Nombre varchar (60) not null,
-  Apellido varchar (60) not null,
-  Edad char (2) not null,
+  Apellido varchar (60) not null,s
   TipoCliente tinyint not null
   constraint fk1_Motorista_Cliente foreign key (IdMotorista) references Motorista (Id)
 );

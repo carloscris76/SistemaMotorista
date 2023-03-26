@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Motorista.AccesoADatos
+namespace Motorista.Entidades.DeNegocio
 {
-    public class MotoristaDAL
+    public class Taxista
     {
     }
 }

@@ -91,8 +91,8 @@ namespace Motorista.AccesoADatos
             if (pTaxista.Estado > 0)
                 pQuery = pQuery.Where(s => s.Estado == pTaxista.Estado);
             pQuery = pQuery.OrderByDescending(s => s.Id).AsQueryable();
-            if (pTaxista.Top_Aux > 0)
-                pQuery = pQuery.Take(pTaxista.Top_Aux).AsQueryable();
+            if (pTaxista.Top_aux > 0)
+                pQuery = pQuery.Take(pTaxista.Top_aux).AsQueryable();
             return pQuery;
         }
         public static async Task<List<Taxista>> BuscarAsync(Taxista pTaxista)

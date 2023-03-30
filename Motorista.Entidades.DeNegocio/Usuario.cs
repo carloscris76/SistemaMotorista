@@ -32,11 +32,11 @@ namespace Motorista.Entidades.DeNegocio
         public string Password { get; set; }
         [Required(ErrorMessage = "Estatus es obligatorio")]
         public byte Estatus { get; set; }
-        [Display(Name = "Fecha registro")]
-        public DateTime FechaRegistro { get; set; }
+        [Display(Name = "Fechar registro")]
+        public DateTime FecharRegistro { get; set; }
         public Rol? Rol { get; set; }
         [NotMapped]
-        public int Top_Aux { get; set; }
+        public int Top_aux { get; set; }
         [NotMapped]
         [Required(ErrorMessage = "Confirmar el password")]
         [StringLength(32, ErrorMessage = "Password debe estar entre 5 a 32 caracteres", MinimumLength = 5)]

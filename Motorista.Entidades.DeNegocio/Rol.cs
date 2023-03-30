@@ -16,7 +16,7 @@ namespace Motorista.Entidades.DeNegocio
         [StringLength(60, ErrorMessage = "Maximo 60 caracteres")]
         public string Nombre { get; set; }
         [NotMapped]
-        public int Top_Aux { get; set; }
+        public int Top_aux { get; set; }
         public List<Usuario>? Usuario { get; set; }
     }
 }

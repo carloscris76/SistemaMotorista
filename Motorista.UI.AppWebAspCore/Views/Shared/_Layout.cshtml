@@ -1,49 +1,235 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Motorista.UI.AppWebAspCore</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Motorista.UI.AppWebAspCore.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Motorista.UI.AppWebAspCore</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Motorista.UI.AppWebAspCore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Motorista @DateTime.Now.Year</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/lib/startbootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/lib/startbootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/lib/startbootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/css/site.css?v=202302110000" rel="stylesheet">
+    <script src="~/lib/startbootstrap/vendor/jquery/jquery.min.js"></script>
+
+</head>
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" style="overflow:auto">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href='@Url.Action("Home")'>
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">MOTORISTA @DateTime.Now.Year</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href='@Url.Action("Home")'>
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Menu
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeguridad"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fa fa-shield-alt"></i>
+                        <span>Seguridad</span>
+                    </a>
+                    <div id="collapseSeguridad" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href='@Url.Action("Index","Rol")'>Roles</a>
+                            <a class="collapse-item" href='@Url.Action("Index","Usuario")'>Usuarios</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReportes"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fa fa-clipboard-list"></i>
+                        <span>Reportes</span>
+                    </a>
+                    <div id="collapseReportes" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item"  href='@Url.Action("Index","Taxista")'>Taxistas</a>
+                            <a class="collapse-item"  href='@Url.Action("Index","Cliente")'>Clientes</a>
+                        </div>
+                    </div>
+                </li>
+            }
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <!-- Topbar Search -->
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Nav Item - Alerts -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell fa-fw"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter">1+</span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">
+                                Notificaciones
+                            </h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 12, 2019</div>
+                                    @if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <span class="font-weight-bold">
+                                            Bienvenidos a Motoristas
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="font-weight-bold">
+                                            Bienvenido al sistema @User.Identity.Name
+                                        </span>
+                                    }
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Mostrar todas las notificaciones</a>
+                        </div>
+                    </li>
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <span> @User.Identity.Name</span>
+                                }
+                                else
+                                {
+                                    <span> Anonymous</span>
+                                }
+                            </span>
+                            <img class="img-profile rounded-circle"
+                                 src="~/lib/startbootstrap/img/undraw_profile.svg">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            @*  <a class="dropdown-item" href='@Url.Action("Edit","Usuario")'>
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Perfil
+                            </a>
+                            <a class="dropdown-item" href='@Url.Action("CambiarPassword","Usuario")'>
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" ></i>
+                            Cambiar password
+                            </a>*@
+                            <a class="dropdown-item" href='@Url.Action("Login","Usuario")'>
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Cerrar session
+                            </a>
+                            <a class="dropdown-item" href='@Url.Action("CambiarPassword","Usuario")'>
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Cambiar password
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- End of Topbar -->
+            <!-- Main Content -->
+            <div id="content">
+                @RenderBody()
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Motorista @DateTime.Now.Year</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!-- Bootstrap core JavaScript-->
+
+    <script src="~/lib/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/lib/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/lib/startbootstrap/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/lib/startbootstrap/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/lib/startbootstrap/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/site.js?v=23"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

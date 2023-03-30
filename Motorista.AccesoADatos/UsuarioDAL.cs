@@ -39,7 +39,7 @@ namespace Motorista.AccesoADatos
                 bool existeLogin = await ExisteLogin(pUsuario, bdContexto);
                 if (existeLogin == false)
                 {
-                    pUsuario.FechaRegistro = DateTime.Now;
+                    pUsuario.FecharRegistro = DateTime.Now;
                     EncriptarMD5(pUsuario);
                     bdContexto.Add(pUsuario);
                     result = await bdContexto.SaveChangesAsync();
@@ -114,15 +114,15 @@ namespace Motorista.AccesoADatos
                 pQuery = pQuery.Where(s => s.Login.Contains(pUsuario.Login));
             if (pUsuario.Estatus > 0)
                 pQuery = pQuery.Where(s => s.Estatus == pUsuario.Estatus);
-            if (pUsuario.FechaRegistro.Year > 1000)
+            if (pUsuario.FecharRegistro.Year > 1000)
             {
-                DateTime fechaInicial = new DateTime(pUsuario.FechaRegistro.Year, pUsuario.FechaRegistro.Month, pUsuario.FechaRegistro.Day, 0, 0, 0);
+                DateTime fechaInicial = new DateTime(pUsuario.FecharRegistro.Year, pUsuario.FecharRegistro.Month, pUsuario.FecharRegistro.Day, 0, 0, 0);
                 DateTime fechaFinal = fechaInicial.AddDays(1).AddMilliseconds(-1);
-                pQuery = pQuery.Where(s => s.FechaRegistro >= fechaInicial && s.FechaRegistro <= fechaFinal);
+                pQuery = pQuery.Where(s => s.FecharRegistro >= fechaInicial && s.FecharRegistro <= fechaFinal);
             }
             pQuery = pQuery.OrderByDescending(s => s.Id).AsQueryable();
-            if (pUsuario.Top_Aux > 0)
-                pQuery = pQuery.Take(pUsuario.Top_Aux).AsQueryable();
+            if (pUsuario.Top_aux > 0)
+                pQuery = pQuery.Take(pUsuario.Top_aux).AsQueryable();
             return pQuery;
         }
         public static async Task<List<Usuario>> BuscarAsync(Usuario pUsuario)

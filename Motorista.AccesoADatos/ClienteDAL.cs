@@ -77,8 +77,8 @@ namespace Motorista.AccesoADatos
             if (pCliente.TipoCliente >0)
                 pQuery = pQuery.Where(s => s.TipoCliente == pCliente.TipoCliente);
             pQuery = pQuery.OrderByDescending(s => s.Id).AsQueryable();
-            if (pCliente.Top_Aux > 0)
-                pQuery = pQuery.Take(pCliente.Top_Aux).AsQueryable();
+            if (pCliente.Top_aux > 0)
+                pQuery = pQuery.Take(pCliente.Top_aux).AsQueryable();
             return pQuery;
         }
         public static async Task<List<Cliente>> BuscarAsync(Cliente pCliente)

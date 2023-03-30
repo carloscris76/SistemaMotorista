@@ -28,7 +28,7 @@ namespace Motorista.Entidades.DeNegocio
         [NotMapped]
         public Taxista? Taxista { get; set; }
         [NotMapped]
-        public int Top_Aux { get; set; }
+        public int Top_aux { get; set; }
     }
     public enum TipoCliente
     {

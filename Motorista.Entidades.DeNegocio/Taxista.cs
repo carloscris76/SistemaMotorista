@@ -34,7 +34,7 @@ namespace Motorista.Entidades.DeNegocio
         [Required(ErrorMessage = "Estado es obligatorio")]
         public byte Estado { get; set; }
         [NotMapped]
-        public int Top_Aux { get; set; }
+        public int Top_aux { get; set; }
         public List<Cliente>? Cliente { get; set; }
     }
     public enum Color
